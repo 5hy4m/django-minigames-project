@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+  {% extends 'mini_app/base.html' %}
+  {% block bodyupper %}
+  {% load staticfiles %}
+  <div class="header">
+    <div class="branding">
+      <style>
+        #by{text-align: right;
+            color: white;
+            }
+        .header{
+          background-color: primary;
+        }
+        #carddeck2{
+            width: 52%;
+        }
+      </style>
+
+      <h1>WELCOME TO MINIGAMES.com</h1>
+      <p id ="by" >by 5HY4M a.k.a shyamkumar</p>
+    </div>
+
+  </div>
+
+  {% endblock %}
+  {% block bodyblock %}
+
+
+  <div class="jumbotron">
+  <div class="row">
+     <div class="card-deck">
+       <div class="card" style="width:400px">
+       <img class="card-img-top hoverable" src="http://rangrezz.chitkara.edu.in/fun/tic%20tac%20toe.jpg" alt="Card image">
+       <div class="card-body">
+         <h4 class="card-title">TicTacToe</h4>
+         <p class="card-text">Challenge with Bots</p>
+         <a href="{% url 'mini_app:tictactoe' %}" class="btn btn-primary">Click To Play</a>
+       </div>
+     </div>
+
+
+     <div class="card" style="width:400px">
+       <img class="card-img-top" src="{% static 'images/fingercut.jpg' %}" alt="Card image">
+       <div class="card-body">
+         <h4 class="card-title">Finger Cut</h4>
+         <p class="card-text">Place Your Finger!!!</p>
+         <a href="{% url 'mini_app:fingercut' %}" class="btn btn-primary">Click To Play</a>
+       </div>
+     </div>
+
+<div class="card" style="width:400px">
+  <img class="card-img-top" src="{% static 'images/snakeattack.jpg' %}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">Snake Attack</h4>
+    <p class="card-text">Play as a Snake</p>
+    <a href="{% url 'mini_app:snakeattack' %}" class="btn btn-primary">Click To Play</a>
+  </div>
+</div>
+
+<div class="card" style="width:400px">
+  <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn5HAgz12zXmSSTWL-nzu5TbgylOckN1alEnV71xppf6tf9mPYBA" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">Orbit Shooter</h4>
+    <p class="card-text">Test Your Accuracy!!</p>
+    <a href="{% url 'mini_app:orbitshooter' %}" class="btn btn-primary">Click To Play</a>
+  </div>
+</div>
+
+
+<!-- end of 4 cards -->
+</div>
+<br>
+<br>
+
+<div class="card-deck mt-5" id = "carddeck2">
+
+
+<div class="card" style="width:400px">
+  <img class="card-img-top" src="https://i.pinimg.com/originals/a0/02/d5/a002d5a441e5effbf0c73e7328de69c7.jpg" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">Archery</h4>
+    <p class="card-text">Challenging</p>
+    <a href="{% url 'mini_app:archery' %}" class="btn btn-primary">Click To Play</a>
+  </div>
+</div>
+
+<div class="card" style="width:400px">
+  <img class="card-img-top" src="{% static 'images/bulb.jpg' %}" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">Turn On The Light</h4>
+    <p class="card-text">Puzzle</p>
+    <a href="{% url 'mini_app:light_game' %}" class="btn btn-primary">Click To Play</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+</div>
+  {% endblock %}

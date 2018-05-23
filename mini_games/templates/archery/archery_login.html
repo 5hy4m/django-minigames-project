@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+  {% extends 'mini_app/base.html' %}
+  {% block bodyupper %}
+    <h1>Kindly fill the details</h1>
+    <form method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="submit" class = "btn btn-primary" value="Submit">
+    </form>
+
+  {% endblock %}

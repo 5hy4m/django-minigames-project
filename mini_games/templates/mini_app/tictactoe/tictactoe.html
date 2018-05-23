@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style media="screen">
+      @keyframes rot {
+  0%   {transform: rotate(-4deg);}
+  50%  {transform: rotate(4deg);}
+  100%  {transform: rotate(-4deg);}
+}
+
+
+
+#label{
+  position: relative ;
+  margin: 0px 0px 0px 0px ;
+  padding: 0px 0px 0px 0px ;
+  font-family: monospace ;
+  font-size: 40px ;
+  color: #d0d0d0 ;
+  text-align: center ;
+  width: fit-content ;
+  height: fit-content ;
+  animation: rot 5s infinite;
+  animation-timing-function: linear;
+  z-index: 1000 ;
+}
+
+
+body {
+  margin: 0px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
+  background-color: #202020;
+}
+
+#TicTacToe{
+  position: relative;
+  margin: 10px auto 0px auto;
+  padding: 0px 0px 0px 0px;
+  width: 188px;
+  height: 188px;
+  border-style: hidden;
+  border-width: 4px;
+  border-color: #404040;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+
+@keyframes cellPress{
+  0% {transform: scale(1) ;}
+  50% {transform: scale(1.13) ;}
+  100% {transform: scale(1) ;}
+}
+
+.Cell{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  width: 60px;
+  height: 60px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #313131;
+  border-radius: 10px;
+  background-color: #202020;
+  font-family: monospace;
+  font-size: 40px;
+  font-weight: 900;
+  color: #d0d0d0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Cell:active{
+  animation: cellPress 0.2s 1 ;
+}
+
+.Cell:hover{
+  background-color: #232323;
+}
+.Cell:active{
+  background-color: #161616;
+}
+#cell_1{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+#cell_2{
+      position: absolute;
+  top: 0px;
+  left: 64px;
+}
+#cell_3{
+  position: absolute;
+  top: 0px;
+  left: 128px;
+}
+#cell_4{
+  position: absolute;
+  top: 62px;
+  left: 0px;
+}
+#cell_5{
+  position: absolute;
+  top: 62px;
+  left: 64px;
+}
+#cell_6{
+  position: absolute;
+  top: 62px;
+  left: 128px;
+}
+#cell_7{
+  position: absolute;
+  top: 124px;
+  left: 0px;
+}
+#cell_8{
+  position: absolute;
+  top: 124px;
+  left: 64px;
+}
+#cell_9{
+  position: absolute;
+  top: 124px;
+  left: 128px;
+}
+
+.BTN{
+  margin: 0px 0px 0px 0px;
+  font-family: monospace;
+  font-size: 15px;
+  color: #d0d0d0;
+  text-align: center;
+  background-color: #202020;
+  width: fit-content;
+  height: 35px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #303030;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@keyframes btnHover{
+  0% { transform: rotate(0deg) ; }
+  100% { transform: rotate(-2deg) ; }
+}
+
+.BTN:hover{
+  /* transform: rotate( -2deg ) ; */
+  background-color: #303030;
+  font-weight: 900;
+  animation: btnHover 0.2s 1 ;
+  animation-fill-mode: both ;
+  animation-timing-function: linear;
+}
+
+.BTN:active{
+  background-color: #151515;
+}
+
+#PWB{
+  margin: 0px 0px 10px 0px;
+}
+#PWB:hover{
+  border-color: #ff5555;
+}
+#PWBN{
+  margin: 0px 0px 10px 0px;
+}
+#PWBN:hover{
+  border-color: #66ff66;
+}
+#PWBM{
+  margin: 0px 0px 10px 0px;
+}
+#PWBM:hover{
+  border-color: #ffff50;
+}
+#PWF{
+  margin: 0px 0px 0px 0px;
+}
+#PWF:hover{
+  border-color: #d0d0d0;
+}
+#ch_mode{
+  margin: -20px 140px auto 10px;
+}
+#ch_mode:hover{
+  border-color: #d0d0d0;
+}
+
+@keyframes dropDown{
+  0% { top: -237px ; }
+  100% { top: 0px ; }
+}
+
+#select_mode{
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  margin: 10px auto 0px auto;
+  animation: dropDown 0.7s 1 ;
+  animation-timing-function: ease-out;
+  z-index: 100 ;
+}
+#game{
+  position: relative;
+  width: 270px;
+  height: 228px;
+  background-color: inherit;
+}
+#screen{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  top: 190px;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 900;
+  color: #d0d0d0;
+  text-align: center;
+  background-color: inherit;
+}
+#Cross_Scores{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  top: 8px;
+  left: 0px;
+  width: 40px;
+  height: 45px;
+  font-family: monospace;
+  font-size: 20px;
+  color: #d0d0d0;
+  text-align: center;
+  background-color: inherit;
+}
+#Zero_Scores{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  top: 8px;
+  right: 0px;
+  width: 40px;
+  height: 45px;
+  font-family: monospace;
+  font-size: 20px;
+  color: #d0d0d0;
+  text-align: center;
+  background-color: inherit;
+}
+#foo{
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  color: #d0d0d0;
+  text-align: center;
+  align-items: center;
+  margin: 0px 0px 10px 0px;
+  padding: 0px auto 0px auto;
+}
+#foo a{
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+#foo a:visited{
+  color: #d0d0d0;
+}
+
+@keyframes fadeIn{
+  0% {bottom: 30px; opacity: 0 ;}
+  100% {bottom: 10px; opacity: 1 ;}
+}
+
+#ver{
+  width: fit-content;
+  height: fit-content;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: left;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  animation: fadeIn 2s 1 ;
+}
+#author{
+  width: fit-content;
+  height: fit-content;
+  font-family: "Times New Roman";
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-align: right;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  animation: fadeIn 2s 1 ;
+}
+      </style>
+        <title>TicTacToe 2.8</title>
+    </head>
+
+    <body>
+
+        <center>
+            <header id="label">
+                TicTacToe
+            </header>
+        </center>
+
+        <center>
+        <div id="select_mode">
+            <button id="PWBN" class="BTN" onClick="chooseMode('newbeeBot')">Play with newbee bot</button><br />
+            <button id="PWBM" class="BTN" onClick="chooseMode('middleBot')">Play with middle bot</button><br />
+            <button id="PWB" class="BTN" onClick="chooseMode('normalBot')">Play with normal bot</button><br />
+            <button id="PWF" class="BTN" onClick="chooseMode('friend')">Play with friend</button>
+
+        </div>
+        </center>
+        <center>
+        <div id="game" hidden>
+                <div id="Cross_Scores" >X<br />0</div>
+                <div id="Zero_Scores" >O<br />0</div>
+            <center>
+                <div id="TicTacToe" >
+                    <button class="Cell" id="cell_1" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_2" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_3" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_4" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_5" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_6" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_7" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_8" onClick="typePlayerSimbol(this);"></button>
+                    <button class="Cell" id="cell_9" onClick="typePlayerSimbol(this);"></button>
+                </div>
+                <div id="screen"></div>
+        </center>
+        </div>
+        </center>
+        <footer id="foo">
+            <div id="ver">
+                TicTacToe<br />
+                Ver: 2.8
+            </div>
+            <center>
+                <button id="ch_mode" class="BTN" onClick="changeMode();" hidden>Restart</button>
+            </center>
+        <div id="author">Powered by Vlad Tsislevsky<br /><a href="https://vk.com/id60692595" target="_blank">VK.com</a> / <a href="mailto:vlad.cislevskiy@gmail.com" >Mail to me</a><br />
+        Tested by <a href="https://vk.com/staskis3" target="_blank">StasKis</a>
+        </div>
+        </footer>
+        <script>
+        var players = [];
+var withBot = "friend";
+players[0] = 'X';
+players[1] = 'O';
+var scores = [];
+scores[0] = 0;
+scores[1] = 0;
+var currentPlayer = 0;
+var cells = [];
+var gameOver = true;
+var markedCells = 0;
+var winCellBg = "#d0d0d0";
+var cellBg = "#202020";
+var fontColor = "#d0d0d0";
+var winFontColor = "#202020";
+
+function randomInteger(min, max) {
+  var rand = min + Math.random() * (max + 1 - min);
+  rand = Math.floor(rand);
+return rand;
+}
+
+function chooseMode(val){
+  withBot = val;
+  document.getElementById('select_mode').style.display = "none";
+  document.getElementById('game').style.display = "block";
+  document.getElementById('ch_mode').style.display = "block";
+  gameOver = false;
+}
+
+
+
+function numToCells(){
+  for(x = 0; x <= 8; x++){
+      cells[x] = x;
+  }
+}
+numToCells();
+
+function press(el){
+  document.getElementById(el).click();
+}
+
+function bot_findWinStep(){
+   //win step in 1 row
+  if(cells[1] == players[1] && cells[2] == players[1] && cells[0] == 0){press("cell_1"); return 0;}
+  if(cells[0] == players[1] && cells[2] == players[1] && cells[1] == 1){press("cell_2"); return 0;}
+  if(cells[0] == players[1] && cells[1] == players[1] && cells[2] == 2){press("cell_3"); return 0;}
+
+  //win step in 2 row
+  if(cells[4] == players[1] && cells[5] == players[1] && cells[3] == 3){press("cell_4"); return 0;}
+  if(cells[3] == players[1] && cells[5] == players[1] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[3] == players[1] && cells[4] == players[1] && cells[5] == 5){press("cell_6"); return 0;}
+
+  //win step in 3 row
+  if(cells[7] == players[1] && cells[8] == players[1] && cells[6] == 6){press("cell_7"); return 0;}
+  if(cells[6] == players[1] && cells[8] == players[1] && cells[7] == 7){press("cell_8"); return 0;}
+  if(cells[6] == players[1] && cells[7] == players[1] && cells[8] == 8){press("cell_9"); return 0;}
+
+  //win step in 1 col
+  if(cells[3] == players[1] && cells[6] == players[1] && cells[0] == 0){press("cell_1"); return 0;}
+  if(cells[0] == players[1] && cells[6] == players[1] && cells[3] == 3){press("cell_4"); return 0;}
+  if(cells[0] == players[1] && cells[3] == players[1] && cells[6] == 6){press("cell_7"); return 0;}
+
+  //win step in 2 col
+  if(cells[4] == players[1] && cells[7] == players[1] && cells[1] == 1){press("cell_2"); return 0;}
+  if(cells[1] == players[1] && cells[7] == players[1] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[1] == players[1] && cells[4] == players[1] && cells[7] == 7){press("cell_8"); return 0;}
+
+  //win step in 3 col
+  if(cells[5] == players[1] && cells[8] == players[1] && cells[2] == 2){press("cell_3"); return 0;}
+  if(cells[2] == players[1] && cells[8] == players[1] && cells[5] == 5){press("cell_6"); return 0;}
+  if(cells[2] == players[1] && cells[5] == players[1] && cells[8] == 8){press("cell_9"); return 0;}
+
+  //win step in \
+  if(cells[0] == players[1] && cells[4] == players[1] && cells[8] == 8){press("cell_9"); return 0;}
+  if(cells[0] == players[1] && cells[8] == players[1] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[4] == players[1] && cells[8] == players[1] && cells[0] == 0){press("cell_1"); return 0;}
+
+  //win step in /
+  if(cells[2] == players[1] && cells[4] == players[1] && cells[6] == 6){press("cell_7"); return 0;}
+  if(cells[4] == players[1] && cells[6] == players[1] && cells[2] == 2){press("cell_3"); return 0;}
+  if(cells[2] == players[1] && cells[6] == players[1] && cells[4] == 4){press("cell_5"); return 0;}
+}
+
+function bot_findSafeStep(){
+  //safe in 1 row
+  if(cells[1] == players[0] && cells[2] == players[0] && cells[0] == 0){press("cell_1"); return 0;}
+  if(cells[0] == players[0] && cells[1] == players[0] && cells[2] == 2){press("cell_3"); return 0;}
+  if(cells[0] == players[0] && cells[2] == players[0] && cells[1] == 1){press("cell_2"); return 0;}
+
+  //safe in 2 row
+  if(cells[3] == players[0] && cells[4] == players[0] && cells[5] == 5){press("cell_6"); return 0;}
+  if(cells[3] == players[0] && cells[5] == players[0] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[4] == players[0] && cells[5] == players[0] && cells[3] == 3){press("cell_4"); return 0;}
+
+  //safe in 3 row
+  if(cells[6] == players[0] && cells[7] == players[0] && cells[8] == 8){press("cell_9"); return 0;}
+  if(cells[6] == players[0] && cells[8] == players[0] && cells[7] == 7){press("cell_8"); return 0;}
+  if(cells[7] == players[0] && cells[8] == players[0] && cells[6] == 6){press("cell_7"); return 0;}
+
+  //safe in 1 col
+  if(cells[3] == players[0] && cells[6] == players[0] && cells[0] == 0){press("cell_1"); return 0;}
+  if(cells[0] == players[0] && cells[6] == players[0] && cells[3] == 3){press("cell_4"); return 0;}
+  if(cells[3] == players[0] && cells[0] == players[0] && cells[6] == 6){press("cell_7"); return 0;}
+
+  //fafe in 2 col
+  if(cells[4] == players[0] && cells[7] == players[0] && cells[1] == 1){press("cell_2"); return 0;}
+  if(cells[1] == players[0] && cells[7] == players[0] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[1] == players[0] && cells[4] == players[0] && cells[7] == 7){press("cell_8"); return 0;}
+
+  //safe in 3 col
+  if(cells[5] == players[0] && cells[8] == players[0] && cells[2] == 2){press("cell_3"); return 0;}
+  if(cells[2] == players[0] && cells[8] == players[0] && cells[5] == 5){press("cell_6"); return 0;}
+  if(cells[2] == players[0] && cells[5] == players[0] && cells[8] == 8){press("cell_9"); return 0;}
+
+  //safe in \
+  if(cells[4] == players[0] && cells[8] == players[0] && cells[0] == 0){press("cell_1"); return 0;}
+  if(cells[0] == players[0] && cells[8] == players[0] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[0] == players[0] && cells[4] == players[0] && cells[8] == 8){press("cell_9"); return 0;}
+
+  //safe in /
+  if(cells[4] == players[0] && cells[6] == players[0] && cells[2] == 2){press("cell_3"); return 0;}
+  if(cells[2] == players[0] && cells[6] == players[0] && cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[2] == players[0] && cells[4] == players[0] && cells[6] == 6){press("cell_7"); return 0;}
+}
+
+function bot_clickFirstEmptyCell(){
+  //First empty cell
+  if(cells[0] === 0){press("cell_1"); return 0;}
+  if(cells[1] == 1){press("cell_2"); return 0;}
+  if(cells[2] == 2){press("cell_3"); return 0;}
+  if(cells[3] == 3){press("cell_4"); return 0;}
+  if(cells[4] == 4){press("cell_5"); return 0;}
+  if(cells[5] == 5){press("cell_6"); return 0;}
+  if(cells[6] == 6){press("cell_7"); return 0;}
+  if(cells[7] == 7){press("cell_8"); return 0;}
+  if(cells[8] == 8){press("cell_9"); return 0;}
+}
+
+function newbeeBot(){
+  var num = randomInteger(1,9);
+  var obj = document.getElementById('cell_' + num);
+  if(markedCells < 9){
+  if(obj.innerHTML != 'X' && obj.innerHTML != 'O'){
+      press('cell_' + num);
+  }
+  else{newbeeBot();}
+  }
+}
+
+function middleBot(){
+  if(bot_findSafeStep() == 0){return 0;}
+  newbeeBot();
+}
+
+function normalBot(){
+
+  if(bot_findWinStep() == 0){return 0;}
+
+  if(bot_findSafeStep() == 0){return 0;}
+
+  //Anti StasKis
+  if(cells[0] == players[0] && cells[5] == players[0] && cells[7] == players[0] && cells[8] == players[1] && cells[4] == players[1]){press('cell_3'); return 0;}
+  if(cells[5] == players[0] && cells[6] == players[0] && cells[8] == 8){press('cell_9'); return 0;}
+
+  //block 37
+  if(cells[2] == players[0] && cells[6] == players[0] && cells[7] == 7){press("cell_8"); return 0;}
+
+  //block 17
+  if(cells[0] == players[0] && cells[7] == players[0] && cells[3] == 3 && cells[8] == 8){press("cell_4"); return 0;}
+
+  //block 38
+  if(cells[2] == players[0] && cells[7] == players[0] && cells[8] == 8){press("cell_9"); return 0;}
+
+  //block 95
+  if(cells[8] == players[0] && cells[4] == players[0] && cells[6] == 6){press("cell_7"); return 0;}
+
+  //block 86
+  if(cells[7] == players[0] && cells[5] == players[0] && cells[8] == 8){press("cell_9"); return 0;}
+
+  //Center defense
+  if((cells[0] == players[0] || cells[1] == players[0] || cells[2] == players[0] || cells[3] == players[0] || cells[5] == players[0] || cells[6] ==  players[0] || cells[7] == players[0] || cells[8] == players[0]) && cells[4] == 4){press("cell_5"); return 0;}
+
+  if(bot_clickFirstEmptyCell() == 0){return 0;}
+}
+
+function newGame(){
+  for(x = 0; x <9; x++){
+      cells[x] = x;
+  }
+
+  for(x = 1; x <=9; x++){
+      document.getElementById('cell_' + x).innerHTML = '';
+  }
+  for(x = 1; x <=9; x++){
+      document.getElementById('cell_' + x).style.backgroundColor = cellBg;
+      document.getElementById('cell_' + x).style.color = fontColor;
+  }
+  document.getElementById('screen').innerHTML = "";
+  markedCells = 0;
+  currentPlayer = 0;
+  gameOver = false;
+}
+
+function changeMode(){
+  document.getElementById('ch_mode').style.display = "none";
+  document.getElementById('game').style.display = "none";
+  document.getElementById('select_mode').style.display = "block";
+  newGame();
+  scores[0] = 0;
+  scores[1] = 0;
+  document.getElementById('Zero_Scores').innerHTML = "O<br />" + scores[1];
+  document.getElementById('Cross_Scores').innerHTML = "X<br />" + scores[0];
+  gameOver = true;
+}
+
+function applyWinner(winCell1,winCell2,winCell3){
+  gameOver = true;
+  if(winCell1 == winCell2 && winCell2 == winCell3){
+      document.getElementById('screen').innerHTML = "Round draw!";
+  }
+  else{
+      winCell1+=1;
+      winCell2+=1;
+      winCell3+=1;
+      document.getElementById("cell_" + winCell1).style.backgroundColor = winCellBg;
+      document.getElementById("cell_" + winCell2).style.backgroundColor = winCellBg;
+      document.getElementById("cell_" + winCell3).style.backgroundColor = winCellBg;
+      document.getElementById("cell_" + winCell1).style.color = winFontColor;
+      document.getElementById("cell_" + winCell2).style.color = winFontColor;
+      document.getElementById("cell_" + winCell3).style.color = winFontColor;
+      document.getElementById('screen').innerHTML = "Winner is " + document.getElementById("cell_" + winCell3).innerHTML + "!";
+      if(document.getElementById("cell_" + winCell3).innerHTML == "O"){
+          scores[1]+=1;
+          document.getElementById('Zero_Scores').innerHTML = "O<br />" + scores[1];
+      }
+      if(document.getElementById("cell_" + winCell3).innerHTML == "X"){
+          scores[0]+=1;
+          document.getElementById('Cross_Scores').innerHTML = "X<br />" + scores[0];
+      }
+  }
+  setTimeout(newGame,1000);
+}
+
+function findMatch(){
+  var match = false;
+  if(cells[0] == cells[1] && cells[1] == cells[2]){
+      applyWinner(0,1,2); match = true; return 0;
+  }
+  if(cells[3] == cells[4] && cells[4] == cells[5]){
+      applyWinner(3,4,5); match = true; return 0;
+  }
+  if(cells[6] == cells[7] && cells[7] == cells[8]){
+      applyWinner(6,7,8); match = true; return 0;
+  }
+  if(cells[0] == cells[3] && cells[3] == cells[6]){
+      applyWinner(0,3,6); match = true; return 0;
+  }
+  if(cells[1] == cells[4] && cells[4] == cells[7]){
+      applyWinner(1,4,7); match = true; return 0;
+  }
+  if(cells[2] == cells[5] && cells[5] == cells[8]){
+      applyWinner(2,5,8); match = true; return 0;
+  }
+  if(cells[0] == cells[4] && cells[4] == cells[8]){
+      applyWinner(0,4,8); match = true; return 0;
+  }
+  if(cells[2] == cells[4] && cells[4] == cells[6]){
+      applyWinner(2,4,6); match = true; return 0;
+  }
+  if(markedCells == 9 && match == false){
+      applyWinner(0,0,0); return 0;
+  }
+}
+
+function typePlayerSimbol(obj){
+  if(gameOver == false){
+      if(obj.innerHTML != players[0] && obj.innerHTML != players[1]){
+          obj.innerHTML = players[currentPlayer];
+          markedCells += 1;
+          if(currentPlayer == 0){currentPlayer = 1;}
+          else{currentPlayer = 0;}
+          cells[parseInt(obj.id[obj.id.length-1]-1)] = obj.innerHTML;
+          findMatch();
+      }
+      switch(withBot){
+          case "newbeeBot":
+          if(currentPlayer == 1){newbeeBot();} break;
+          case "middleBot":
+          if(currentPlayer == 1){middleBot();} break;
+          case "normalBot":
+          if(currentPlayer == 1){normalBot();} break;
+      }
+      /*if(withBot == "normalBot"){
+      if(currentPlayer == 1){BOT();}
+      }
+      if(withBot == "newbeeBot"){
+      if(currentPlayer == 1){newbeeBot();}
+      }*/
+  }
+
+}
+
+        </script>
+    </body>
+</html>
